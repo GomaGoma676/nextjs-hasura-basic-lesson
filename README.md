@@ -17,7 +17,7 @@
 ### 1-3.  Apollo Client + heroicons + cross-fetch のインストール
     yarn add @apollo/client graphql @apollo/react-hooks cross-fetch @heroicons/react
 ### 1-4.  React-Testing-Library + MSW + next-page-tester のインストール
-    yarn add -D msw next-page-tester jest @testing-library/react @types/jest @testing-library/jest-dom @testing-library/dom babel-jest @babel/core @testing-library/user-event jest-css-modules
+    yarn add -D msw@0.35.0 next-page-tester jest @testing-library/react @types/jest @testing-library/jest-dom @testing-library/dom babel-jest @babel/core @testing-library/user-event jest-css-modules
 ### 1-5.  Project folder 直下に".babelrc"ファイルを作成して下記設定を追加
     touch .babelrc
 ~~~
