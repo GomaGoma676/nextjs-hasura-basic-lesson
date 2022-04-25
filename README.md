@@ -17,7 +17,9 @@
 ### 1-3.  Apollo Client + heroicons + cross-fetch のインストール
     yarn add @apollo/client graphql @apollo/react-hooks cross-fetch @heroicons/react
 ### 1-4.  React-Testing-Library + MSW + next-page-tester のインストール
-    yarn add -D msw@0.35.0 next-page-tester jest @testing-library/react @types/jest @testing-library/jest-dom @testing-library/dom babel-jest @babel/core @testing-library/user-event jest-css-modules
+    yarn add react@17.0.2 react-dom@17.0.2
+    yarn add next@11.1.2
+    yarn add -D msw@0.35.0 next-page-tester@0.29.0 @types/react@17.0.41 jest@26.6.3 @testing-library/react@11.2.6 @types/jest@26.0.22 @testing-library/jest-dom@5.11.10 @testing-library/dom@7.30.3 @testing-library/user-event@13.1.3 babel-jest@26.6.3 @babel/core@7.17.9 jest-css-modules
 ### 1-5.  Project folder 直下に".babelrc"ファイルを作成して下記設定を追加
     touch .babelrc
 ~~~
@@ -81,7 +83,10 @@ https://tailwindcss.com/docs/guides/nextjs
 ### 3-3. tailwind.config.jsのpurge設定追加
 ~~~
 module.exports = {
-    purge: ['./pages/**/*.tsx', './components/**/*.tsx'],
+    content: [
+        "./pages/**/*.{js,ts,jsx,tsx}",
+        "./components/**/*.{js,ts,jsx,tsx}",
+    ],
     darkMode: false,
     theme: {
         extend: {},
