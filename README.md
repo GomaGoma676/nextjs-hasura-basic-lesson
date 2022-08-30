@@ -15,7 +15,7 @@
     npx create-next-app .
 #### Node.js version 10.13以降が必要です。 -> ターミナル `node -v`でver確認出来ます。
 ### 1-3.  Apollo Client + heroicons + cross-fetch のインストール
-    yarn add @apollo/client graphql @apollo/react-hooks cross-fetch @heroicons/react
+    yarn add @apollo/client graphql @apollo/react-hooks cross-fetch @heroicons/react@1.0.6
 ### 1-4.  React-Testing-Library + MSW + next-page-tester のインストール
     yarn add react@17.0.2 react-dom@17.0.2
     yarn add next@11.1.2
