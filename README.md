@@ -127,10 +127,10 @@ Time:        1.728 s, estimated 2 s
 ~~~
 ## 5. GraphQL codegen
 ### 5-1.  install modules + init
-    yarn add -D @graphql-codegen/cli
+    yarn add -D @graphql-codegen/cli@1.21.3
     yarn graphql-codegen init
     yarn
-    yarn add -D @graphql-codegen/typescript
+    yarn add -D @graphql-codegen/typescript@1.21.1
 ### 5-2.  add queries in queries/queries.ts file
 ### 5-3.  generate types automatically
     yarn gen-types
