@@ -15,7 +15,7 @@
     npx create-next-app .
 #### Node.js version 10.13以降が必要です。 -> ターミナル `node -v`でver確認出来ます。
 ### 1-3.  Apollo Client + heroicons + cross-fetch のインストール
-    yarn add @apollo/client graphql @apollo/react-hooks cross-fetch @heroicons/react@1.0.6
+    yarn add @apollo/client@3.3.15 graphql@15.5.0 @apollo/react-hooks@4.0.0 cross-fetch@3.1.4 @heroicons/react@1.0.6
 ### 1-4.  React-Testing-Library + MSW + next-page-tester のインストール
     yarn add react@17.0.2 react-dom@17.0.2
     yarn add next@11.1.2
@@ -59,7 +59,7 @@ https://nextjs.org/learn/excel/typescript/create-tsconfig
 ### 2-1. 空のtsconfig.json作成
     touch tsconfig.json
 ### 2-2. 必要moduleのインストール
-    yarn add -D typescript @types/react@17.0.41 @types/node
+    yarn add -D typescript @types/react@17.0.41 @types/node@14.14.41
 ### 2-3. 開発server起動
     yarn dev
 ### 2-4. _app.js, index.js -> tsx へ拡張子変更
