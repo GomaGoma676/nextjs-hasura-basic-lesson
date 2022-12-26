@@ -12,7 +12,7 @@
     npm install --global yarn
     yarn --version
 ### 1-2.  create-next-app
-    npx create-next-app .
+    npx create-next-app@11.1.2 .
 #### Node.js version 10.13以降が必要です。 -> ターミナル `node -v`でver確認出来ます。
 ### 1-3.  Apollo Client + heroicons + cross-fetch のインストール
     yarn add @apollo/client@3.3.15 graphql@15.5.0 @apollo/react-hooks@4.0.0 cross-fetch@3.1.4 @heroicons/react@1.0.6
