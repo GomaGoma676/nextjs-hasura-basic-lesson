@@ -1,4 +1,5 @@
 import { graphql } from 'msw'
+
 export const handlers = [
   graphql.query('GetUsers', (req, res, ctx) => {
     return res(

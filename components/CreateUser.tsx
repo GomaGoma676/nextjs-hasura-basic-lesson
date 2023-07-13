@@ -11,10 +11,13 @@ export const CreateUser: VFC = () => {
     text,
     handleTextChange,
   } = useCreateForm()
+
   return (
     <>
-      {/* {console.log('CreateUser rendered')} */}
+      {console.log('CreateUser rendered')}
+
       <p className="mb-3 font-bold">Custom Hook + useCallback + memo</p>
+
       <div className="mb-3 flex flex-col justify-center items-center">
         <label>Text</label>
         <input
@@ -24,6 +27,7 @@ export const CreateUser: VFC = () => {
           onChange={handleTextChange}
         />
       </div>
+
       <form
         className="flex flex-col justify-center items-center "
         onSubmit={handleSubmit}
@@ -43,7 +47,8 @@ export const CreateUser: VFC = () => {
           Submit
         </button>
       </form>
-      <Child printMsg={printMsg} handleSubmit={handleSubmit} />
+
+      <Child printMsg={printMsg} handleSubmit={handleSubmit}/>
     </>
   )
 }

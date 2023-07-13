@@ -4,8 +4,11 @@ import { useReactiveVar } from '@apollo/client'
 import Link from 'next/link'
 
 export const LocalStateA: VFC = () => {
+  // 入力された値を保持する
   const [input, setInput] = useState('')
+  // makeVarで作成した変数の中身を取得
   const todos = useReactiveVar(todoVar)
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     todoVar([...todoVar(), { title: input }])

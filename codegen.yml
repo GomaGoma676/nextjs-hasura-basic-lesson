@@ -1,8 +1,8 @@
 overwrite: true
-schema: "https://basic-lesson-hasura.hasura.app/v1/graphql"
-documents: "queries/**/*.ts"
+schema: "https://open-opossum-20.hasura.app/v1/graphql"
+documents: "queries/**/**.ts"
 generates:
-  types/generated/graphql.tsx:
+  types/generates/graphql.tsx:
     plugins:
       - "typescript"
       - "typescript-operations"

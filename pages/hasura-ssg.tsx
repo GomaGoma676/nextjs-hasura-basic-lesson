@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import { initializeApollo } from '../lib/apolloClient'
 import { GET_USERS } from '../queries/queries'
-import { GetUsersQuery, Users } from '../types/generated/graphql'
+import { GetUsersQuery, Users } from '../types/generates/graphql'
 import { Layout } from '../components/Layout'
 
 interface Props {
@@ -11,6 +11,8 @@ interface Props {
     __typename?: 'users'
   } & Pick<Users, 'id' | 'name' | 'created_at'>)[]
 }
+
+// ビルド時にHTML生成する。javascriptを無効化しても表示される
 const HasuraSSG: VFC<Props> = ({ users }) => {
   return (
     <Layout title="Hasura SSG">
@@ -29,6 +31,7 @@ const HasuraSSG: VFC<Props> = ({ users }) => {
 }
 export default HasuraSSG
 
+// ビルド時にサーバーサイドで実行される
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query<GetUsersQuery>({

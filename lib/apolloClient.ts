@@ -7,8 +7,10 @@ import {
 import 'cross-fetch/polyfill'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
+
 const createApolloClient = () => {
   return new ApolloClient({
+    // サーバーサイドで処理が走っているときにtrue(ssrModeになる)
     ssrMode: typeof window === 'undefined',
     link: new HttpLink({
       uri: process.env.NEXT_PUBLIC_HASURA_URL,
@@ -19,6 +21,8 @@ const createApolloClient = () => {
     cache: new InMemoryCache(),
   })
 }
+
+// クライアントサイドの処理とサーバーサイドの処理で切り分け
 export const initializeApollo = (initialState = null) => {
   const _apolloClient = apolloClient ?? createApolloClient()
   // For SSG and SSR always create a new Apollo Client

@@ -8,7 +8,7 @@ import {
   GetUserByIdQuery,
   GetUserIdsQuery,
   Users,
-} from '../../types/generated/graphql'
+} from '../../types/generates/graphql'
 import { Layout } from '../../components/Layout'
 interface Props {
   user: {
@@ -16,6 +16,7 @@ interface Props {
   } & Pick<Users, 'id' | 'name' | 'created_at'>
 }
 
+// user: getStaticPropsのreturn
 const UserDetail: VFC<Props> = ({ user }) => {
   if (!user) {
     return <Layout title="loading">Loading...</Layout>
@@ -45,9 +46,11 @@ export default UserDetail
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const apolloClient = initializeApollo()
+  // data: 存在するユーザーの一覧
   const { data } = await apolloClient.query<GetUserIdsQuery>({
     query: GET_USERIDS,
   })
+  // nextで個別のページを作るときのお決まり処理
   const paths = data.users.map((user) => ({
     params: {
       id: user.id,
@@ -55,9 +58,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }))
   return {
     paths,
+    // 個別ページを動的に増やすことが出来る
     fallback: true,
   }
 }
+
+// 引数のparams: contextオブジェクト
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query<GetUserByIdQuery>({

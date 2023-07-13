@@ -11,7 +11,7 @@ import {
   CreateUserMutation,
   DeleteUserMutation,
   UpdateUserMutation,
-} from '../types/generated/graphql'
+} from '../types/generates/graphql'
 import { Layout } from '../components/Layout'
 import { UserItem } from '../components/UserItem'
 
@@ -20,12 +20,21 @@ const HasuraCRUD: VFC = () => {
   const { data, error } = useQuery<GetUsersQuery>(GET_USERS, {
     fetchPolicy: 'cache-and-network',
   })
+
   const [update_users_by_pk] = useMutation<UpdateUserMutation>(UPDATE_USER)
+
   const [insert_users_one] = useMutation<CreateUserMutation>(CREATE_USER, {
+    // CreateUserMutationが完了したときに走る処理
+    // insert_users_one: CreateUserMutationの返り値(id, name, created_at)が入ってる
     update(cache, { data: { insert_users_one } }) {
+      // 作ったユーザーのキャッシュIDを取得(typenameとidを組み合わせた値)
       const cacheId = cache.identify(insert_users_one)
+      // cache.modifyのfield: 更新したいフィールドを指定
       cache.modify({
         fields: {
+          // toReference(引数): 引数(cacheId)に紐づいたデータを参照することができる
+          // →usersのフィールドのキャッシュを更新
+          // users(第1引数:既存の配列のキャッシュを受け取る変数, 第2引数:特定のオブジェクトを参照するための関数)
           users(existingUsers, { toReference }) {
             return [toReference(cacheId), ...existingUsers]
           },
@@ -33,6 +42,7 @@ const HasuraCRUD: VFC = () => {
       })
     },
   })
+
   const [delete_users_by_pk] = useMutation<DeleteUserMutation>(DELETE_USER, {
     update(cache, { data: { delete_users_by_pk } }) {
       cache.modify({
@@ -46,6 +56,7 @@ const HasuraCRUD: VFC = () => {
       })
     },
   })
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (editedUser.id) {
@@ -73,8 +84,10 @@ const HasuraCRUD: VFC = () => {
       setEditedUser({ id: '', name: '' })
     }
   }
+
   if (error) return <Layout title="Hasura CRUD">Error: {error.message}</Layout>
-  return (
+
+  return(
     <Layout title="Hasura CRUD">
       <p className="mb-3 font-bold">Hasura CRUD</p>
       <form
@@ -113,4 +126,5 @@ const HasuraCRUD: VFC = () => {
     </Layout>
   )
 }
+
 export default HasuraCRUD
